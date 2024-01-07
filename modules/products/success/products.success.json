@@ -1,0 +1,50 @@
+{
+    "320": {
+        "msg": {
+            "EN":"Product Added Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "321": {
+        "msg": {
+            "EN":"Product Updated Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "322": {
+        "msg": {
+            "EN":"Product Image Added Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "323": {
+        "msg": {
+            "EN":"Product Image Deleted Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "324": {
+        "msg": {
+            "EN":"Product Deatils Retrived Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "325": {
+        "msg": {
+            "EN":"Product Deleted Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "326": {
+        "msg": {
+            "EN":"Product Pre Load Data Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    },
+    "327": {
+        "msg": {
+            "EN":"Product Data Retrived Successfully",
+            "AR":"تم إنشاء المستخدم"
+        }
+    }
+}

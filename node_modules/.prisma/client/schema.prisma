@@ -1,0 +1,79 @@
+generator client {
+  provider        = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(250)
+  status          Boolean           @default(true)
+  created_on      DateTime          @default(now()) @db.Timestamp(0)
+  products        product[]
+}
+
+model brand {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(250)
+  image           String            @db.VarChar(250)
+  status          Boolean           @default(true)
+  created_on      DateTime          @default(now()) @db.Timestamp(0)
+  products        product[]
+}
+
+model product {
+  id                  Int              @id @default(autoincrement())
+  category_id         Int
+  brand_id            Int
+  name                String           @db.VarChar(250)
+  year                String           @db.VarChar(10)
+  milage              Int              @default(0)
+  exteriorColor       String           @db.VarChar(100)
+  interiorColor       String           @db.VarChar(100)
+  driveType           String           @db.VarChar(250)
+  engine              String           @db.VarChar(250)
+  bodyType            String           @db.VarChar(250)
+  transmission        String           @db.VarChar(250)
+  description         String           @db.Text
+  detaildescription   String           @db.Text
+  price               Int              @default(0)
+  status              Boolean           @default(true)
+  created_on          DateTime         @default(now()) @db.Timestamp(0)
+  brand               brand            @relation(fields: [brand_id], references: [id], onDelete: Cascade, map: "products_ibfk_1")
+  category            category         @relation(fields: [category_id], references: [id], onDelete: Cascade, map: "products_ibfk_2")
+  images              images[]
+
+  @@index([brand_id], map: "brand_id")
+  @@index([category_id], map: "category_id")
+}
+
+
+
+model images {
+  id                  Int       @id @default(autoincrement())
+  product_id          Int
+  image               String    @db.VarChar(250)
+  status              Boolean           @default(true)
+  created_on          DateTime  @default(now()) @db.Timestamp(0)
+  product            product   @relation(fields: [product_id], references: [id], onDelete: Cascade, map: "images_ibfk_1")
+
+  @@index([product_id], map: "product_id")
+}
+
+model admin {
+  id           Int    @id @default(autoincrement())
+  fname        String @db.VarChar(250)
+  lname        String @db.VarChar(250)
+  role         String @db.VarChar(25)
+  dept         String @db.VarChar(100)
+  designation  String @db.VarChar(250)
+  adm_user     String @db.VarChar(100)
+  adm_password String @db.VarChar(500)
+  country      String @default("UAE") @db.VarChar(20)
+  created_date String @db.VarChar(30)
+  create_by    String @db.VarChar(100)
+  logintoken   String @db.Text
+}
